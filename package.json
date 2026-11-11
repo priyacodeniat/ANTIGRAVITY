@@ -1,0 +1,34 @@
+{
+  "name": "agri-assist-monorepo",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Production-grade AI-Powered Agriculture Crop Advisory Assistant",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "verify": "node scripts/verify-system.js",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "build": "npm run build:server && npm run build:client",
+    "test:server": "cd server && npm test",
+    "typecheck": "cd server && npm run typecheck && cd ../client && npm run typecheck"
+  },
+  "keywords": [
+    "agriculture",
+    "gemini-ai",
+    "crop-advisory",
+    "precision-farming",
+    "supabase",
+    "react",
+    "express"
+  ],
+  "author": "AgriAssist Engineering Team",
+  "license": "MIT"
+}
+

@@ -1,0 +1,83 @@
+{
+  "app_name": "AgriAssist AI",
+  "app_tagline": "Smart Agriculture Crop Advisory Platform for Indian Farmers",
+  "nav": {
+    "dashboard": "Dashboard",
+    "crop_recommendation": "Crop Recommendation",
+    "disease_detection": "Crop Health & Disease",
+    "fertilizer_advisory": "Fertilizer Advisory",
+    "irrigation_advisory": "Irrigation Guidance",
+    "chatbot": "Kisan Copilot",
+    "history": "Advisory History",
+    "profile": "Farmer Profile",
+    "settings": "Settings",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "profile_incomplete_warning": "Your farmer profile is incomplete. Complete your profile for localized advice.",
+    "complete_profile_cta": "Update Profile",
+    "quick_actions": "Agricultural Advisory Hub",
+    "recent_advisories": "Recent Advisory Reports",
+    "view_all": "View All History",
+    "no_recent": "No previous advisories recorded yet. Start by generating your first crop or disease analysis."
+  },
+  "crop": {
+    "title": "AI Crop Recommendation",
+    "subtitle": "Discover the most suitable crops for your soil, season, and water availability",
+    "form_state": "State",
+    "form_district": "District",
+    "form_village": "Village (Optional)",
+    "form_soil_type": "Soil Classification",
+    "form_soil_ph": "Soil pH (0 - 14)",
+    "form_land_area": "Land Area",
+    "form_water": "Water Availability",
+    "form_season": "Cropping Season",
+    "form_pref": "Farming Method",
+    "submit": "Analyze Land & Recommend Crops",
+    "analyzing": "Analyzing Agro-Climatic Data..."
+  },
+  "disease": {
+    "title": "Crop Health & Disease Lab",
+    "subtitle": "Upload or capture a photo of infected leaves, stems, or fruits for visual AI diagnosis",
+    "form_crop_name": "Crop Name",
+    "form_growth_stage": "Growth Stage",
+    "form_symptoms": "Observed Symptoms",
+    "upload_instruction": "Drop clear plant photo here or click to browse",
+    "submit": "Diagnose Plant Image",
+    "analyzing": "Running Multimodal Vision Diagnosis..."
+  },
+  "fertilizer": {
+    "title": "Fertilizer & Nutrition Advisory",
+    "subtitle": "Get balanced organic and chemical nutrient schedules based on crop phenology",
+    "submit": "Calculate Fertilizer Schedule",
+    "analyzing": "Calculating Balanced Nutrition Plan..."
+  },
+  "irrigation": {
+    "title": "Precision Irrigation Advisory",
+    "subtitle": "Optimize watering intervals and conserve groundwater based on crop requirements",
+    "submit": "Generate Irrigation Schedule",
+    "analyzing": "Evaluating Water Depletion..."
+  },
+  "chat": {
+    "title": "AgriAssist AI Copilot",
+    "subtitle": "Ask anything about crops, pests, fertilizers, soil, or organic farming practices in your regional language",
+    "placeholder": "Type or speak your agricultural question...",
+    "send": "Send Query"
+  },
+  "common": {
+    "loading": "Processing...",
+    "save": "Save Changes",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "error": "Error",
+    "success": "Success",
+    "language": "Language",
+    "confidence": "Confidence",
+    "suitability": "Suitability",
+    "disclaimer": "Agricultural Advisory Disclaimer"
+  }
+}
+
