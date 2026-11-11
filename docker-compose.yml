@@ -40,3 +40,4 @@ services:
 networks:
   agriassist-network:
     driver: bridge
+

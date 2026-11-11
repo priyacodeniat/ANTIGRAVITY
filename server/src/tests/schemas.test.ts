@@ -100,3 +100,4 @@ export function runSchemaValidationTests(): { passed: number; failed: number } {
 
   return { passed, failed };
 }
+

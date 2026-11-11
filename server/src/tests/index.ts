@@ -24,3 +24,4 @@ if (totalFailed > 0) {
   console.log('🎉 All agricultural unit tests passed successfully!\n');
   process.exit(0);
 }
+

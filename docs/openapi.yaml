@@ -1,0 +1,210 @@
+openapi: 3.0.3
+info:
+  title: AgriAssist AI - Agriculture Crop Advisory Assistant API
+  version: 1.0.0
+  description: RESTful API for AI-powered precision crop recommendations, plant disease diagnosis, fertilizer balancing, and multilingual agricultural chat.
+servers:
+  - url: http://localhost:5000/api/v1
+    description: Local Development Server
+
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      responses:
+        '200':
+          description: Service status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+
+  /profile:
+    get:
+      summary: Retrieve authenticated farmer profile
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Profile data
+    put:
+      summary: Update farmer profile
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                phone:
+                  type: string
+                state:
+                  type: string
+                district:
+                  type: string
+                landArea:
+                  type: number
+                soilType:
+                  type: string
+      responses:
+        '200':
+          description: Updated profile
+
+  /advisory/crop-recommendation:
+    post:
+      summary: Generate crop recommendations based on soil and climate
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - state
+                - district
+                - soilType
+                - landArea
+                - waterAvailability
+                - season
+                - farmingPreference
+              properties:
+                state:
+                  type: string
+                district:
+                  type: string
+                soilType:
+                  type: string
+                soilPh:
+                  type: number
+                nitrogen:
+                  type: number
+                phosphorus:
+                  type: number
+                potassium:
+                  type: number
+                landArea:
+                  type: number
+                waterAvailability:
+                  type: string
+                  enum: [low, medium, high]
+                season:
+                  type: string
+                  enum: [kharif, rabi, zaid, other]
+      responses:
+        '200':
+          description: Top 5 suitable crops with scores and agronomic guidance
+
+  /advisory/disease-detection:
+    post:
+      summary: Upload plant image for Gemini Multimodal Vision disease diagnosis
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - image
+                - cropName
+              properties:
+                image:
+                  type: string
+                  format: binary
+                cropName:
+                  type: string
+                growthStage:
+                  type: string
+                plantPartAffected:
+                  type: string
+                symptomsObserved:
+                  type: string
+      responses:
+        '200':
+          description: Disease diagnosis, symptoms, and organic/chemical remedies
+
+  /advisory/fertilizer:
+    post:
+      summary: Calculate balanced fertilizer schedule
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cropName
+                - growthStage
+                - soilType
+                - landArea
+                - fertilizerPreference
+      responses:
+        '200':
+          description: Fertilizer nutrition plan
+
+  /advisory/irrigation:
+    post:
+      summary: Generate precision irrigation advisory
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - cropName
+                - growthStage
+                - soilType
+                - waterAvailability
+                - irrigationMethod
+      responses:
+        '200':
+          description: Irrigation schedule and conservation methods
+
+  /chat:
+    post:
+      summary: Send query to Kisan AI Copilot
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                conversationId:
+                  type: string
+                language:
+                  type: string
+                  enum: [en, hi, kn, te, ta, ml, mr]
+      responses:
+        '200':
+          description: AI agricultural answer and action recommendations
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
