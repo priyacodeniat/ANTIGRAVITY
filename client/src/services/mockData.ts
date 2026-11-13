@@ -182,3 +182,4 @@ export const mockChatResponse: ChatResponse = {
   confidence: 'high',
   requires_expert_consultation: false,
 };
+

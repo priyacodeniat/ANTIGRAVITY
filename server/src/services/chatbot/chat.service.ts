@@ -9,10 +9,10 @@ export class ChatService {
     userId: string,
     input: ChatMessageInput
   ): Promise<{ conversationId: string; response: ChatAiResponse }> {
-    let conversationId = input.conversationId;
+    let conversationId: string;
 
     // 1. Resolve or initialize conversation
-    if (!conversationId) {
+    if (!input.conversationId) {
       const title = input.message.length > 30 ? `${input.message.slice(0, 30)}...` : input.message;
       const { data: convData, error: convErr } = await supabaseAdmin
         .from('chat_conversations')
@@ -28,6 +28,8 @@ export class ChatService {
         throw new Error(`Failed to create conversation: ${convErr?.message || 'Unknown error'}`);
       }
       conversationId = convData.id;
+    } else {
+      conversationId = input.conversationId;
     }
 
     // 2. Fetch recent conversation history for grounding context
