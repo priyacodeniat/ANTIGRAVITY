@@ -1,7 +1,5 @@
-import { createApp } from './app.js';
+import { app } from './index.js';
 import { env } from './config/env.js';
-
-const app = createApp();
 
 const server = app.listen(env.PORT, () => {
   console.log('====================================================');

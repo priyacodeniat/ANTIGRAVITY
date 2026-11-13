@@ -2,7 +2,7 @@
   "name": "agri-assist-server",
   "version": "1.0.0",
   "description": "Backend API for AI-Powered Agriculture Crop Advisory Assistant",
-  "main": "dist/server.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",

@@ -14,9 +14,23 @@ export const createApp = (): Express => {
   app.use(helmet());
 
   // 2. CORS Configuration
+  const allowedOrigins: (string | RegExp)[] = [
+    env.CLIENT_URL,
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:3000',
+  ];
+
+  if (process.env.VERCEL || process.env.VERCEL_URL) {
+    allowedOrigins.push(/https:\/\/.*\.vercel\.app$/);
+    if (process.env.VERCEL_URL) {
+      allowedOrigins.push(`https://${process.env.VERCEL_URL}`);
+    }
+  }
+
   app.use(
     cors({
-      origin: [env.CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+      origin: allowedOrigins,
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization'],
